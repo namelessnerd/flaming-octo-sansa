@@ -14,7 +14,10 @@ in the original list, one could create a set of strings sorted by their length.
 The code for this would be:
 
 	sorted_string=[list_of_strings[sorted_tuple[1]] for sorted_tuple in merge_sort([(len(v),k) for k,v in enumerate(list_of_strings)], type='tuple')].
+
+test methods: test_string_list and test_short_list
 '''
+import random
 
 def merge_sort(list, type=None, pos=0):
 	len_list= len(list)
@@ -77,4 +80,14 @@ def mergetuple_left_right(left, right, pos):
 		len_right= len(right)
 	return result
 
-	
+def test_string_list():
+	print 'This method tests merge sort with a list of strings that need to be sorted by their string length'
+	list_of_strings= ['cat', 'cab', 'bat', 'bark', 'bard', 'cow', 'as']
+	print 'List before sorting: {0}'.format(list_of_strings)
+	sorted_string=[list_of_strings[sorted_tuple[1]] for sorted_tuple in merge_sort([(len(v),k) for k,v in enumerate(list_of_strings)], type='tuple')]
+
+def test_short_list():
+	print 'This method tests merge sort with a list of 100 integers'
+	list_of_int= [random.randint(0,100) for i in range(100)]
+	print 'List before sorting: {0}'.format(list_of_int)
+	print 'List after sorting: {0}'.format(merge_sort(list_of_int))
