@@ -53,9 +53,6 @@ def quicksort(list, low, high):
 		idx= create_partition(list, low, high)
 		print list
 		quicksort(list, low, idx-1)
-		print 10*"--"
-		print idx
-		print high
 		quicksort(list,idx, high)
 
 def test():
