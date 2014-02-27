@@ -51,7 +51,6 @@ def create_partition(list, low, high):
 def quicksort(list, low, high):
 	if low< high:
 		idx= create_partition(list, low, high)
-		print list
 		quicksort(list, low, idx-1)
 		quicksort(list,idx, high)
 
