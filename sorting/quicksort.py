@@ -56,7 +56,7 @@ def quicksort(list, low, high):
 
 def test():
 	list= [1, 12, 5, 26, 7, 14, 3, 7, 2,]
-	quicksort(list, 0, 8)
+	quicksort(list, 0, len(list)-1)
 	print list
 
 def main():
