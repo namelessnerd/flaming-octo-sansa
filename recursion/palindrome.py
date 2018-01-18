@@ -1,33 +1,33 @@
-special_chars = [".", ",", "!", ";", ":", "\\", "-", '"']
-def palindrome_helper(s, left_index, right_index, string_length):
-    if s[left_index] in special_chars:
-        left_index += 1
-        return palindrome_helper(s, left_index, right_index, string_length)
-    if s[right_index] in special_chars:
-        right_index -= 1
-        return palindrome_helper(s, left_index, right_index, string_length)
-    if s[left_index] == s[right_index]:
-        if (string_length - abs(right_index)) >= left_index:
+def is_palindrome(input_string, left_index, right_index, input_length):
+        """
+        Returns if a given string is  Ignores special characters
+        """
+        if input_string is None:
+            return False
+        if right_index < left_index:
+            return True
+        # skip special characters when we see them
+        while left_index < input_length and\
+            not (input_string[left_index].isalnum()):
             left_index += 1
+        while right_index >= left_index and\
+            not (input_string[right_index].isalnum()):
             right_index -= 1
-            return palindrome_helper(s, left_index, right_index, string_length)
+        if left_index <= right_index:
+            return input_string[left_index].lower() == input_string[right_index].lower()\
+                and is_palindrome(input_string,left_index + 1, right_index-1, input_length)
         else:
-            return 1
-
-
-def is_palindrome(s):
-    """
-    Return if a string is palindrome, ignoring punctuation marks, using recursion
-    """
-    # term_char
-    return 1 if palindrome_helper(s, 0, -1, len(s)) else 0
+            return False
 
 def main():
-    # input_string
-    input_string = input()
-    print (is_palindrome(input_string))
+    # unit_test_cases
+    unit_test_cases = {None: False, "": True, "Foo": False, "a": True,
+                      "a ;;!@#!@": True, "madam": True,
+                      "   ma!@#!da;;   m ": True,"abb1221bba": True,}
 
-
-
+    for unit_test_case in unit_test_cases:
+        input_length = len(unit_test_case) if unit_test_case is not None else 0
+        assert(is_palindrome(unit_test_case, 0, input_length -1, input_length))\
+            ==unit_test_cases[unit_test_case]
 if __name__ == '__main__':
     main()
