@@ -1,0 +1,13 @@
+offset 2
+{11: ['11'], 2: ['1+1', '1*1']}
+current_expr list : ['11']
+current_expr value : 11
+Updating existing entry with new size 2
+current_expr list : ['1+1', '1*1']
+current_expr value : 1+1
+Updating existing entry with new size 3
+current_expr list : ['1+1', '1*1']
+current_expr value : 1*1
+Updating existing entry with new size 3
+Updating existing entry with new size 4
+offset 3
